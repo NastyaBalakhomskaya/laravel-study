@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[MainController::class,'index'])
+    ->name('home');
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about',[AboutUsController::class,'show'])
+    ->name('about');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact',[ContactUsController::class,'show'])
+    ->name('contact');
 
-Route::post('/contact/submit', function () {
-    return "Данные отправлены";
-});
+//Route::post('/contact/submit', function () {
+//    return "Данные отправлены";
+//});
