@@ -168,6 +168,9 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'name' => 'Введите имя',
+        'email' => 'Введите email',
+        'phone' => 'Введите телефон',
+    ],
 ];
