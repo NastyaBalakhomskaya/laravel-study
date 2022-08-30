@@ -26,7 +26,7 @@ class CreateContactRequest extends FormRequest
         return [
             'name' => ['required', 'min:1'],
             'email' => ['required', 'email:rfc'],
-            'phone' => ['required', 'max:20'],
+            'phone' => ['required', 'phone:AUTO,US'],
         ];
     }
 }

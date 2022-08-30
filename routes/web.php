@@ -28,6 +28,4 @@ Route::get('/contact', [ContactUsController::class, 'show'])
 Route::post('/contact', [ContactUsController::class, 'store'])
     ->name('contact.store');
 
-//Route::post('/contact/submit', function () {
-//    return "Данные отправлены";
-//});
+

@@ -7,7 +7,7 @@
 
 
     @if ($errors->any())
-        <div class="alert alert-danger">Данные внесены не верно!</div>
+        <div class="alert alert-danger">Error!</div>
     @endif
 
 
@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <label for="name">{{ __('validation.attributes.name') }}</label>
-                <input value="{{ old ('name') }}" type="text" name="name" placeholder="Введите имя"
+                <input value="{{ old('name') }}" type="text" name="name" placeholder={{ __('validation.attributes.name') }}
                        class="form-control @error('name') is-invalid @enderror">
                 @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -26,7 +26,7 @@
             <br>
             <div class="form-group">
                 <label for="email">{{ __('validation.attributes.email') }}</label>
-                <input value="{{ old ('email') }}" type="email" name="email" placeholder="Введите email"
+                <input value="{{ old('email') }}" type="email" name="email" placeholder={{ __('validation.attributes.email') }}
                        class="form-control @error('email') is-invalid @enderror">
                 @error('email')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -35,7 +35,7 @@
             <br>
             <div class="form-group">
                 <label for="phone">{{ __('validation.attributes.phone') }}</label>
-                <input value="{{ old ('phone') }}" type="text" name="phone" placeholder="Введите телефон"
+                <input value="{{ old('phone') }}" type="text" name="phone" placeholder={{ __('validation.attributes.phone') }}
                        class="form-control @error('phone') is-invalid @enderror">
                 @error('phone')
                 <div class="invalid-feedback">{{ $message }}</div>

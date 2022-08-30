@@ -17,12 +17,6 @@ class ContactUsController extends Controller
 
     public function store(CreateContactRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:1'],
-            'email' => ['required', 'email:rfc'],
-            'phone' => ['required', 'max:20'],
-        ]);
-
         $mail = new NewContact(
             $request->get('name'),
             $request->get('email'),
