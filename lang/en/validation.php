@@ -111,6 +111,7 @@ return [
         'symbols' => 'The :attribute must contain at least one symbol.',
         'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
     ],
+    'phone' => 'The :attribute field contains an invalid number.',
     'present' => 'The :attribute field must be present.',
     'prohibited' => 'The :attribute field is prohibited.',
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
@@ -168,6 +169,9 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone',
+    ],
 ];

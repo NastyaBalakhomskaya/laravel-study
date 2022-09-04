@@ -25,6 +25,7 @@ Route::get('/about', [AboutUsController::class, 'show'])
 Route::get('/contact', [ContactUsController::class, 'show'])
     ->name('contact');
 
-//Route::post('/contact/submit', function () {
-//    return "Данные отправлены";
-//});
+Route::post('/contact', [ContactUsController::class, 'store'])
+    ->name('contact.store');
+
+
