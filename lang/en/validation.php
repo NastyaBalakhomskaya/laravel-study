@@ -173,5 +173,8 @@ return [
         'name' => 'Name',
         'email' => 'Email',
         'phone' => 'Phone',
+        'title' => 'Name film',
+        'year' => 'Year',
+        'text' => 'Description film',
     ],
 ];

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\MainController;
@@ -27,5 +28,29 @@ Route::get('/contact', [ContactUsController::class, 'show'])
 
 Route::post('/contact', [ContactUsController::class, 'store'])
     ->name('contact.store');
+
+Route::get('/films/create', [FilmController::class, 'createForm'])
+    ->name('film.create.form');
+
+Route::post('/films/create', [FilmController::class, 'create'])
+    ->name('film.create');
+
+Route::get('/films', [FilmController::class, 'list'])
+    ->name('film.list');
+
+Route::get('/films/{id}', [FilmController::class, 'show'])
+    ->name('film.show');
+
+Route::get('/films/{id}/edit', [FilmController::class, 'editForm'])
+    ->name('film.edit.form');
+
+Route::post('/films/{id}/edit', [FilmController::class, 'edit'])
+    ->name('film.edit');
+
+Route::get('/films/{id}/delete', [FilmController::class, 'deleteForm'])
+    ->name('film.delete.form');
+
+Route::post('/films/{id}/delete', [FilmController::class, 'delete'])
+    ->name('film.delete');
 
 
