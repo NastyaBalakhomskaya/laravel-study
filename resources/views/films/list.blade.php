@@ -27,8 +27,12 @@
                     <br>
                     <a href="{{ route('film.edit.form', ['id' => $film->id]) }}">Edit</a>
                     <br>
-                    <a href="{{ route('film.delete.form', ['id' => $film->id]) }}">Delete</a>
-
+                    <form action="{{ route('film.delete', ['id' => $film->id]) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger">
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
         @endforeach

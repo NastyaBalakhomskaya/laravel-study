@@ -22,11 +22,12 @@ class FilmController extends Controller
         return view('films.edit', compact('film'));
     }
 
-    public function deleteForm(int $id)
+    public function delete(int $id)
     {
         $film = Film::query()->findOrFail($id)->delete();
         return redirect()->route('film.list');
     }
+
 
     public function create(CreateRequest $request)
     {

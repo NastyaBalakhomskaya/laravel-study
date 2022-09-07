@@ -47,10 +47,8 @@ Route::get('/films/{id}/edit', [FilmController::class, 'editForm'])
 Route::post('/films/{id}/edit', [FilmController::class, 'edit'])
     ->name('film.edit');
 
-Route::get('/films/{id}/delete', [FilmController::class, 'deleteForm'])
-    ->name('film.delete.form');
-
 Route::post('/films/{id}/delete', [FilmController::class, 'delete'])
     ->name('film.delete');
+
 
 
