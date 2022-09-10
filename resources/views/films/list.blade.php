@@ -16,7 +16,6 @@
         <tbody>
         @foreach($films as $film)
             <tr>
-                btn-success
                 <th scope="row">{{ $film->id }}</th>
                 <td>{{ $film->title }}</td>
                 <td>{{ $film->created_at?->format('Y/m/d') }}</td>
