@@ -16,20 +16,18 @@
         <tbody>
         @foreach($films as $film)
             <tr>
-
+                btn-success
                 <th scope="row">{{ $film->id }}</th>
                 <td>{{ $film->title }}</td>
-
                 <td>{{ $film->created_at?->format('Y/m/d') }}</td>
                 <td>
-
                     <a href="{{ route('film.show', ['id' => $film->id]) }}">Show</a>
                     <br>
                     <a href="{{ route('film.edit.form', ['id' => $film->id]) }}">Edit</a>
                     <br>
                     <form action="{{ route('film.delete', ['id' => $film->id]) }}" method="post">
                         @csrf
-                        <button type="submit" class="btn btn-outline-danger">
+                        <button type="submit" class="btn btn-danger">
                             Delete
                         </button>
                     </form>

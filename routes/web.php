@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FilmController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\MainController;
@@ -50,5 +51,15 @@ Route::post('/films/{id}/edit', [FilmController::class, 'edit'])
 Route::post('/films/{id}/delete', [FilmController::class, 'delete'])
     ->name('film.delete');
 
+Route::group(['prefix' => '/sign-up'], function () {
+    Route::get('', [UserController::class, 'signUpForm'])
+        ->name('sign-up.form');
+
+    Route::post('', [UserController::class, 'signUp'])
+        ->name('sign-up');
+});
+
+Route::get('/verify-email/{id}/{hash}', [UserController::class, 'verifyEmail'])
+    -> name('verify.email');
 
 

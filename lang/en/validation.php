@@ -176,5 +176,8 @@ return [
         'title' => 'Name film',
         'year' => 'Year',
         'text' => 'Description film',
+        'password' => 'Password',
+        'password_confirmation' => 'Confirm Password',
+        'checkbox' => 'The confirmation',
     ],
 ];

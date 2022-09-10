@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Film\CreateRequest;
-use App\Http\Requests\Film\DeleteRequest;
 use App\Http\Requests\Film\EditRequest;
 use App\Models\Film;
 use Illuminate\Http\Request;

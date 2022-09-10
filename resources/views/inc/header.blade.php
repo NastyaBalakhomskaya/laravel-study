@@ -10,6 +10,7 @@
         <li class="nav-item"><a href="{{ route('home') }}" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About-us</a></li>
         <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact-us</a></li>
+        <li class="nav-item"><a href="{{ route('sign-up.form') }}" class="nav-link">Sign Up</a></li>
         <li class="nav-item"><a href="{{ route('film.create.form') }}" class="nav-link">Create Film</a></li>
         <li class="nav-item"><a href="{{ route('film.list') }}" class="nav-link">Films List</a></li>
 
