@@ -60,6 +60,6 @@ Route::group(['prefix' => '/sign-up'], function () {
 });
 
 Route::get('/verify-email/{id}/{hash}', [UserController::class, 'verifyEmail'])
-    -> name('verify.email');
+    ->name('verify.email');
 
 
