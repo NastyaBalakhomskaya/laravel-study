@@ -12,6 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -43,8 +46,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttributes($value)
+    // public function setPasswordAttributes($value)
+    // {
+    //     $this->attributes['password'] = Hash::make($value);
+    // }
+    protected function password(): Attribute
     {
-        $this->attributes['password'] = Hash::make($value);
+        return Attribute::make(set: function ($value) {
+            return Hash::make($value);
+        });
+    }
+
+    public function films()
+    {
+        return $this->hasMany(Film::class);
     }
 }

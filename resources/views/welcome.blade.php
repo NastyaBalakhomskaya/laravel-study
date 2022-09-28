@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('title','Main')
+@section('title-block','Main')
 
 @section('content')
     <h1>Hello world</h1>

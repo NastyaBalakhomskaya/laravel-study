@@ -10,11 +10,10 @@
 </head>
 <body>
 
-
 @include('inc.header')
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div>
             @yield('content')
         </div>
     </div>

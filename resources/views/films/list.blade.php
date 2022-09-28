@@ -9,8 +9,8 @@
             <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Created At</th>
+            <th scope="col">User add name</th>
             <th scope="col">Actions</th>
-
         </tr>
         </thead>
         <tbody>
@@ -19,6 +19,8 @@
                 <th scope="row">{{ $film->id }}</th>
                 <td>{{ $film->title }}</td>
                 <td>{{ $film->created_at?->format('Y/m/d') }}</td>
+                <td>{{ $film->user->name }}</td>
+                <td></td>
                 <td>
                     <a href="{{ route('film.show', ['id' => $film->id]) }}">Show</a>
                     <br>
