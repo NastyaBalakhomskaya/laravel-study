@@ -29,8 +29,8 @@ class EditRequest extends FormRequest
             'text' => ['required', 'min:100'],
             'actors' => ['required', 'array', 'min:1'],
             'actors.*' => ['required', 'exists:actors,id'],
-            'zhanrs' => ['required', 'array', 'min:1'],
-            'zhanrs.*' => ['required', 'exists:zhanrs,id'],
+            'genres' => ['required', 'array', 'min:1'],
+            'genres.*' => ['required', 'exists:genres,id'],
         ];
     }
 }

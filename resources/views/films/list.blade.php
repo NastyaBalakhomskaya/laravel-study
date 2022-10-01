@@ -22,11 +22,11 @@
                 <td>{{ $film->user->name }}</td>
                 <td></td>
                 <td>
-                    <a href="{{ route('film.show', ['id' => $film->id]) }}">Show</a>
+                    <a href="{{ route('film.show', ['film' => $film->id]) }}">Show</a>
                     <br>
-                    <a href="{{ route('film.edit.form', ['id' => $film->id]) }}">Edit</a>
+                    <a href="{{ route('film.edit.form', ['film' => $film->id]) }}">Edit</a>
                     <br>
-                    <form action="{{ route('film.delete', ['id' => $film->id]) }}" method="post">
+                    <form action="{{ route('film.delete', ['film' => $film->id]) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger">
                             Delete

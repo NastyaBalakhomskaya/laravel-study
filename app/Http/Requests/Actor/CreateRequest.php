@@ -26,8 +26,8 @@ class CreateRequest extends FormRequest
         return [
             'last_name' => ['required', 'min:1', 'max:45'],
             'first_name' => ['required', 'min:1', 'max:45'],
-            'otchestvo' => ['required', 'min:1', 'max:45'],
-            'date_rozh' => ['required'],
+            'patronymic' => ['required', 'min:1', 'max:45'],
+            'birthday' => ['required'],
             'height' => ['required', 'integer'],
         ];
     }

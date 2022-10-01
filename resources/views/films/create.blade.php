@@ -39,14 +39,14 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="">Zhanrs</label>
-                @error('zhanrs')
+                <label for="">Genres</label>
+                @error('genres')
                 <div>{{ $message }}</div>
                 @enderror
-                @foreach($zhanrs as $zhanr)
+                @foreach($genres as $genre)
                     <div class="form-check">
-                        <input type="checkbox" name="zhanrs[]" value="{{ $zhanr->id }}"
-                               class="form-check-input"> {{ $zhanr->nazvanie }}
+                        <input type="checkbox" name="genres[]" value="{{ $genre->id }}"
+                               class="form-check-input"> {{ $genre->title }}
                     </div>
                 @endforeach
             </div>

@@ -4,7 +4,7 @@ use App\Http\Controllers\ActorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ZhanrController;
+use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\MainController;
@@ -44,16 +44,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/films', [FilmController::class, 'list'])
         ->name('film.list');
 
-    Route::get('/films/{id}', [FilmController::class, 'show'])
+    Route::get('/films/{film}', [FilmController::class, 'show'])
         ->name('film.show');
 
-    Route::get('/films/{id}/edit', [FilmController::class, 'editForm'])
+    Route::get('/films/{film}/edit', [FilmController::class, 'editForm'])
         ->name('film.edit.form');
 
-    Route::post('/films/{id}/edit', [FilmController::class, 'edit'])
+    Route::post('/films/{film}/edit', [FilmController::class, 'edit'])
         ->name('film.edit');
 
-    Route::post('/films/{id}/delete', [FilmController::class, 'delete'])
+    Route::post('/films/{film}/delete', [FilmController::class, 'delete'])
         ->name('film.delete');
 
     Route::get('/actors/create', [ActorController::class, 'createForm'])
@@ -65,39 +65,39 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/actors', [ActorController::class, 'list'])
         ->name('actor.list');
 
-    Route::get('/actors/{id}', [ActorController::class, 'show'])
+    Route::get('/actors/{actor}', [ActorController::class, 'show'])
         ->name('actor.show');
 
-    Route::get('/actors/{id}/edit', [ActorController::class, 'editForm'])
+    Route::get('/actors/{actor}/edit', [ActorController::class, 'editForm'])
         ->name('actor.edit.form');
 
-    Route::post('/actors/{id}/edit', [ActorController::class, 'edit'])
+    Route::post('/actors/{actor}/edit', [ActorController::class, 'edit'])
         ->name('actor.edit');
 
-    Route::post('/actors/{id}/delete', [ActorController::class, 'delete'])
+    Route::post('/actors/{actor}/delete', [ActorController::class, 'delete'])
         ->name('actor.delete');
 
 
-    Route::get('/zhanrs/create', [ZhanrController::class, 'createForm'])
-        ->name('zhanr.create.form');
+    Route::get('/genres/create', [GenreController::class, 'createForm'])
+        ->name('genre.create.form');
 
-    Route::post('/zhanrs/create', [ZhanrController::class, 'create'])
-        ->name('zhanr.create');
+    Route::post('/genres/create', [GenreController::class, 'create'])
+        ->name('genre.create');
 
-    Route::get('/zhanrs', [ZhanrController::class, 'list'])
-        ->name('zhanr.list');
+    Route::get('/genres', [GenreController::class, 'list'])
+        ->name('genre.list');
 
-    Route::get('/zhanrs/{id}', [ZhanrController::class, 'show'])
-        ->name('zhanr.show');
+    Route::get('/genres/{genre}', [GenreController::class, 'show'])
+        ->name('genre.show');
 
-    Route::get('/zhanrs/{id}/edit', [ZhanrController::class, 'editForm'])
-        ->name('zhanr.edit.form');
+    Route::get('/genres/{genre}/edit', [GenreController::class, 'editForm'])
+        ->name('genre.edit.form');
 
-    Route::post('/zhanrs/{id}/edit', [ZhanrController::class, 'edit'])
-        ->name('zhanr.edit');
+    Route::post('/genres/{genre}/edit', [GenreController::class, 'edit'])
+        ->name('genre.edit');
 
-    Route::post('/zhanrs/{id}/delete', [ZhanrController::class, 'delete'])
-        ->name('zhanr.delete');
+    Route::post('/genres/{genre}/delete', [GenreController::class, 'delete'])
+        ->name('genre.delete');
 });
 
 Route::group(['prefix' => '/sign-up'], function () {

@@ -30,8 +30,8 @@ class Film extends Model
         return $this->belongsToMany(Actor::class, 'actor_films');
     }
 
-    public function zhanrs()
+    public function genres()
     {
-        return $this->belongsToMany(Zhanr::class, 'film_zhanrs');
+        return $this->belongsToMany(Genre::class, 'film_genres');
     }
 }

@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('otchestvo');
-            $table->date('date_rozh');
+            $table->string('patronymic');
+            $table->date('birthday');
             $table->float('height');
             $table->timestamps();
         });

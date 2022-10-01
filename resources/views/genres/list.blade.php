@@ -1,30 +1,30 @@
 @extends('layouts.app')
 
-@section('title','Zhanr list')
+@section('title','Genre list')
 
 @section('content')
     <table class="table">
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Nazvanie zhanra</th>
+            <th scope="col">Title genre</th>
             <th scope="col">Created At</th>
             <th scope="col">Actions</th>
 
         </tr>
         </thead>
         <tbody>
-        @foreach($zhanrs as $zhanr)
+        @foreach($genres as $genre)
             <tr>
-                <th scope="row">{{ $zhanr->id }}</th>
-                <td>{{ $zhanr->nazvanie }}</td>
-                <td>{{ $zhanr->created_at?->format('Y/m/d') }}</td>
+                <th scope="row">{{ $genre->id }}</th>
+                <td>{{ $genre->title }}</td>
+                <td>{{ $genre->created_at?->format('Y/m/d') }}</td>
                 <td>
-                    <a href="{{ route('zhanr.show', ['id' => $zhanr->id]) }}">Show</a>
+                    <a href="{{ route('genre.show', ['genre' => $genre->id]) }}">Show</a>
                     <br>
-                    <a href="{{ route('zhanr.edit.form', ['id' => $zhanr->id]) }}">Edit</a>
+                    <a href="{{ route('genre.edit.form', ['genre' => $genre->id]) }}">Edit</a>
                     <br>
-                    <form action="{{ route('zhanr.delete', ['id' => $zhanr->id]) }}" method="post">
+                    <form action="{{ route('genre.delete', ['genre' => $genre->id]) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger">
                             Delete
@@ -36,6 +36,6 @@
         </tbody>
     </table>
     <div>
-        {{ $zhanrs->links() }}
+        {{ $genres->links() }}
     </div>
 @endsection

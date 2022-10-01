@@ -26,19 +26,19 @@
             </div>
 
             <div class="form-group">
-                <label for="otchestvo">{{ __('validation.attributes.otchestvo') }}</label>
-                <input value="{{ old ('otchestvo') }}" name="otchestvo" type="text"
-                       class="form-control @error('otchestvo') is-invalid @enderror">
-                @error('otchestvo')
+                <label for="patronymic">{{ __('validation.attributes.patronymic') }}</label>
+                <input value="{{ old ('patronymic') }}" name="patronymic" type="text"
+                       class="form-control @error('patronymic') is-invalid @enderror">
+                @error('patronymic')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="date_rozh">{{ __('validation.attributes.date_rozh') }}</label>
-                <input value="{{ old ('date_rozh') }}" name="date_rozh" type=date
+                <label for="birthday">{{ __('validation.attributes.birthday') }}</label>
+                <input value="{{ old ('birthday') }}" name="birthday" type=date
                        class="form-control @error('year') is-invalid @enderror">
-                @error('date_rozh')
+                @error('birthday')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>

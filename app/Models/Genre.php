@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Zhanr extends Model
+class Genre extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nazvanie',
+        'title',
     ];
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'film_zhanrs');
+        return $this->belongsToMany(Film::class, 'film_genres');
     }
 }

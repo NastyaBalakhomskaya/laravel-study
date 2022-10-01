@@ -14,15 +14,16 @@ class ActorController extends Controller
         return view('actors.create');
     }
 
-    public function editForm(int $id)
+    public function editForm(Actor $actor)
     {
-        $actor = Actor::query()->findOrFail($id);
+        //$actor = Actor::query()->findOrFail($id);
         return view('actors.edit', compact('actor'));
     }
 
-    public function delete(int $id)
+    public function delete(Actor $actor)
     {
-        $actor = Actor::query()->findOrFail($id)->delete();
+       // $actor = Actor::query()->findOrFail($id)->delete();
+        $actor->delete();
         return redirect()->route('actor.list');
     }
 
@@ -34,18 +35,18 @@ class ActorController extends Controller
         $actor->save();
 
         session()->flash('success', 'Success!');
-        return redirect()->route('actor.show', ['id' => $actor->id]);
+        return redirect()->route('actor.show', ['actor' => $actor->id]);
     }
 
-    public function edit(int $id, EditRequest $request)
+    public function edit(Actor $actor, EditRequest $request)
     {
-        $actor = Actor::query()->findOrFail($id);
+        //$actor = Actor::query()->findOrFail($id);
         $data = $request->validated();
         $actor->fill($data);
         $actor->save();
 
         session()->flash('success', 'Success!');
-        return redirect()->route('actor.show', ['id' => $actor->id]);
+        return redirect()->route('actor.show', ['actor' => $actor->id]);
     }
 
 
@@ -56,9 +57,9 @@ class ActorController extends Controller
         return view('actors.list', ['actors' => $actors]);
     }
 
-    public function show(int $id)
+    public function show(Actor $actor)
     {
-        $actor = Actor::query()->findOrFail($id);
+        //$actor = Actor::query()->findOrFail($id);
 
         return view('actors.show', compact('actor'));
     }

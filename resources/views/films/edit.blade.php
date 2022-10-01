@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <form action="{{route('film.edit', ['id' => $film->id]) }}" method="post">
+        <form action="{{route('film.edit', ['film' => $film->id]) }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="title">{{ __('validation.attributes.title') }}</label>
@@ -40,16 +40,16 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="">Zhanrs</label>
-                @error('zhanrs')
+                <label for="">Genres</label>
+                @error('genres')
                 <div>{{ $message }}</div>
                 @enderror
-                @foreach($zhanrs as $zhanr)
+                @foreach($genres as $genre)
                     <div class="form-check">
-                        <input type="checkbox" name="zhanrs[]" value="{{ $zhanr->id }}"
+                        <input type="checkbox" name="genres[]" value="{{ $genre->id }}"
                                class="form-check-input"
-                               @if($film->zhanrs->contains('id', $zhanr->id)) checked @endif
-                        > {{ $zhanr->nazvanie }}
+                               @if($film->genres->contains('id', $genre->id)) checked @endif
+                        > {{ $genre->title }}
                     </div>
                 @endforeach
             </div>

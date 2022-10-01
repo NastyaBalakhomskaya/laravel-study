@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <form action="{{route('actor.edit', ['id' => $actor->id]) }}" method="post">
+        <form action="{{route('actor.edit', ['actor' => $actor->id]) }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="last_name">{{ __('validation.attributes.last_name') }}</label>
@@ -26,19 +26,19 @@
             </div>
 
             <div class="form-group">
-                <label for="otchestvo">{{ __('validation.attributes.otchestvo') }}</label>
-                <input value="{{ old ('otchestvo', $actor->otchestvo) }}" name="otchestvo" type="text"
-                       class="form-control @error('otchestvo') is-invalid @enderror">
-                @error('otchestvo')
+                <label for="patronymic">{{ __('validation.attributes.patronymic') }}</label>
+                <input value="{{ old ('patronymic', $actor->patronymic) }}" name="patronymic" type="text"
+                       class="form-control @error('patronymic') is-invalid @enderror">
+                @error('patronymic')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="date_rozh">{{ __('validation.attributes.date_rozh') }}</label>
-                <input value="{{ old ('date_rozh', $actor->date_rozh) }}" name="date_rozh" type="date"
-                       class="form-control @error('date_rozh') is-invalid @enderror">
-                @error('date_rozh')
+                <label for="birthday">{{ __('validation.attributes.birthday') }}</label>
+                <input value="{{ old ('birthday', $actor->birthday) }}" name="birthday" type="date"
+                       class="form-control @error('birthday') is-invalid @enderror">
+                @error('birthday')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
