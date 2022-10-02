@@ -9,8 +9,8 @@
             <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Created At</th>
+            <th scope="col">User add name</th>
             <th scope="col">Actions</th>
-
         </tr>
         </thead>
         <tbody>
@@ -19,12 +19,14 @@
                 <th scope="row">{{ $film->id }}</th>
                 <td>{{ $film->title }}</td>
                 <td>{{ $film->created_at?->format('Y/m/d') }}</td>
+                <td>{{ $film->user->name }}</td>
+                <td></td>
                 <td>
-                    <a href="{{ route('film.show', ['id' => $film->id]) }}">Show</a>
+                    <a href="{{ route('film.show', ['film' => $film->id]) }}">Show</a>
                     <br>
-                    <a href="{{ route('film.edit.form', ['id' => $film->id]) }}">Edit</a>
+                    <a href="{{ route('film.edit.form', ['film' => $film->id]) }}">Edit</a>
                     <br>
-                    <form action="{{ route('film.delete', ['id' => $film->id]) }}" method="post">
+                    <form action="{{ route('film.delete', ['film' => $film->id]) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger">
                             Delete
