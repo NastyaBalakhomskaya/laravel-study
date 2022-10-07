@@ -20,16 +20,22 @@
                 <td>{{ $genre->title }}</td>
                 <td>{{ $genre->created_at?->format('Y/m/d') }}</td>
                 <td>
-                    <a href="{{ route('genre.show', ['genre' => $genre->id]) }}">Show</a>
+                    @can('show', $genre)
+                        <a href="{{ route('genre.show', ['genre' => $genre->id]) }}">Show</a>
+                    @endcan
                     <br>
-                    <a href="{{ route('genre.edit.form', ['genre' => $genre->id]) }}">Edit</a>
+                    @can('edit', $genre)
+                        <a href="{{ route('genre.edit.form', ['genre' => $genre->id]) }}">Edit</a>
+                    @endcan
                     <br>
-                    <form action="{{ route('genre.delete', ['genre' => $genre->id]) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">
-                            Delete
-                        </button>
-                    </form>
+                    @can('delete', $genre)
+                        <form action="{{ route('genre.delete', ['genre' => $genre->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    @endcan
                 </td>
             </tr>
         @endforeach

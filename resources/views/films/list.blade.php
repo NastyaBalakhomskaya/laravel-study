@@ -25,17 +25,16 @@
                     <a href="{{ route('film.show', ['film' => $film->id]) }}">Show</a>
                     <br>
                     @can('edit', $film)
-                    <a href="{{ route('film.edit.form', ['film' => $film->id]) }}">Edit</a>
+                        <a href="{{ route('film.edit.form', ['film' => $film->id]) }}">Edit</a>
                     @endcan
                     <br>
-
                     @can('delete', $film)
-                    <form action="{{ route('film.delete', ['film' => $film->id]) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">
-                            Delete
-                        </button>
-                    </form>
+                        <form action="{{ route('film.delete', ['film' => $film->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
                     @endcan
                 </td>
             </tr>

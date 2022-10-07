@@ -27,16 +27,22 @@
                 <td>{{ $actor->height }}</td>
                 <td>{{ $actor->created_at?->format('Y/m/d') }}</td>
                 <td>
-                    <a href="{{ route('actor.show', ['actor' => $actor->id]) }}">Show</a>
+                    @can('show', $actor)
+                        <a href="{{ route('actor.show', ['actor' => $actor->id]) }}">Show</a>
+                    @endcan
                     <br>
-                    <a href="{{ route('actor.edit.form', ['actor' => $actor->id]) }}">Edit</a>
+                    @can('edit', $actor)
+                        <a href="{{ route('actor.edit.form', ['actor' => $actor->id]) }}">Edit</a>
+                    @endcan
                     <br>
-                    <form action="{{ route('actor.delete', ['actor' => $actor->id]) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">
-                            Delete
-                        </button>
-                    </form>
+                    @can('delete', $actor)
+                        <form action="{{ route('actor.delete', ['actor' => $actor->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    @endcan
                 </td>
             </tr>
         @endforeach
