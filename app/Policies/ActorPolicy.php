@@ -20,24 +20,31 @@ class ActorPolicy
     }
 
     public
-    function create(User $user): bool {
-        return $user->role === 'admin';
-        //  return  true;
+    function create(
+        User $user
+    ): bool {
+        return $user->role === User::ROLE_ADMIN;
     }
 
     public
-    function edit(User $user): bool {
-        return $user->role === 'admin';
+    function edit(
+        User $user
+    ): bool {
+        return $user->role === User::ROLE_ADMIN;
     }
 
     public
-    function delete(User $user): bool {
-        return $user->role === 'admin';
+    function delete(
+        User $user
+    ): bool {
+        return $user->role === User::ROLE_ADMIN;
     }
 
     public
-    function show(User $user): bool {
-        return $user->role === 'admin';
+    function show(
+        User $user
+    ): bool {
+        return $user->role === User::ROLE_ADMIN;
     }
 
 }
