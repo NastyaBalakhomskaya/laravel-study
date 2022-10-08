@@ -44,7 +44,7 @@ class GenrePolicy
     function show(
         User $user
     ): bool {
-        return $user->role === 'admin';
+        return $user->role === User::ROLE_ADMIN;
     }
 
 }
