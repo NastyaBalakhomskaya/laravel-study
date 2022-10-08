@@ -39,7 +39,7 @@ class UserController extends Controller
         if (!hash_equals($hash, sha1($user->email))) {
             abort(403);
         }
-        $user->email_verified_at = new DateTime();
+        $user->email_verified_at = new \DateTime();
         $user->save();
 
         session()->flash('success', 'Success!');
