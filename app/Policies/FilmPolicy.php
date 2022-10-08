@@ -20,26 +20,18 @@ class FilmPolicy
         //
     }
 
-    public
-    function create(
-        User $user
-    ): bool {
+    public function create(User $user): bool
+    {
         return $user->role === User::ROLE_ADMIN;
     }
 
-    public
-    function edit(
-        User $user,
-        Film $film
-    ): bool {
+    public function edit(User $user, Film $film): bool
+    {
         return $user->id === $film->user_id;
     }
 
-    public
-    function delete(
-        User $user,
-        Film $film
-    ): bool {
+    public function delete(User $user, Film $film): bool
+    {
         return $user->id === $film->user_id;
     }
 

@@ -19,31 +19,23 @@ class GenrePolicy
         //
     }
 
-    public
-    function create(
-        User $user
-    ): bool {
+    public function create(User $user): bool
+    {
         return $user->role === User::ROLE_ADMIN;
     }
 
-    public
-    function edit(
-        User $user
-    ): bool {
+    public function edit(User $user): bool
+    {
         return $user->role === User::ROLE_ADMIN;
     }
 
-    public
-    function delete(
-        User $user
-    ): bool {
+    public function delete(User $user): bool
+    {
         return $user->role === User::ROLE_ADMIN;
     }
 
-    public
-    function show(
-        User $user
-    ): bool {
+    public function show(User $user): bool
+    {
         return $user->role === User::ROLE_ADMIN;
     }
 
