@@ -12,7 +12,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('film_genres', function (Blueprint $table) {
+        /*Schema::create('film_genres', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('film_id');
@@ -20,7 +20,7 @@ return new class extends Migration {
 
             $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
-        });
+        });*/
     }
 
     /**

@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,9 +13,12 @@ return new class extends Migration {
      */
     public function up()
     {
-       /* Schema::table('users', function (Blueprint $table) {
-            $table->string('role', 15)->default('reader');
-        });*/
+        Schema::create('login_history', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_id');
+            $table->string('user_ip');
+            $table->timestamp('created_at');
+        });
     }
 
     /**
@@ -24,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('login_history');
     }
 };
