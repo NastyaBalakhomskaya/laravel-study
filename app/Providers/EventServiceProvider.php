@@ -6,7 +6,7 @@ use App\Events\UserLoggedIn;
 use App\Events\UserRegistered;
 use App\Listeners\SendLoginAlert;
 use App\Listeners\StoreUserLoginHistory;
-use App\Listeners\StoreUserRegistered;
+use App\Listeners\SendConfirmEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -24,7 +24,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         UserRegistered::class => [
-            StoreUserRegistered::class
+            SendConfirmEmail::class
         ],
         UserLoggedIn::class => [
             StoreUserLoginHistory::class
