@@ -17,18 +17,19 @@
         @endif
 
         @if(auth()->check())
+            <li><a class="nav-link" href="{{route('login-history')}}">Login History</a></li>
             @can('create', \App\Models\Film::class)
                 <li class="nav-item"><a href="{{ route('film.create.form') }}" class="nav-link">Create Film</a></li>
             @endcan
-                <li class="nav-item"><a href="{{ route('film.list') }}" class="nav-link">Films List</a></li>
+            <li class="nav-item"><a href="{{ route('film.list') }}" class="nav-link">Films List</a></li>
             @can('create', \App\Models\Genre::class)
                 <li class="nav-item"><a href="{{ route('genre.create.form') }}" class="nav-link">Create Genre</a></li>
             @endcan
-                <li class="nav-item"><a href="{{ route('genre.list') }}" class="nav-link">Genres List</a></li>
+            <li class="nav-item"><a href="{{ route('genre.list') }}" class="nav-link">Genres List</a></li>
             @can('create', \App\Models\Genre::class)
                 <li class="nav-item"><a href="{{ route('actor.create.form') }}" class="nav-link">Create Actor</a></li>
             @endcan
-                <li class="nav-item"><a href="{{ route('actor.list') }}" class="nav-link">Actors List</a></li>
+            <li class="nav-item"><a href="{{ route('actor.list') }}" class="nav-link">Actors List</a></li>
             <form action="{{ route('logout') }}" method="post" class="form-inline">
                 @csrf
                 <button class="btn btn-danger">Logout</button>

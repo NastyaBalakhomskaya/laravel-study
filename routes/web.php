@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FilmController;
+use App\Http\Controllers\LoginHistoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GenreController;
 use App\Models\Actor;
@@ -37,7 +38,8 @@ Route::post('/contact', [ContactUsController::class, 'store'])
     ->name('contact.store');
 
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'confirm']], function () {
+//Route::group(['middleware' => ['auth']], function () {
     Route::get('/films/create', [FilmController::class, 'createForm'])
         ->name('film.create.form')
         ->middleware('can:create,' . Film::class);
@@ -63,7 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/films/{film}/delete', [FilmController::class, 'delete'])
         ->name('film.delete')
         ->middleware('can:delete,film');
-
+});
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/actors/create', [ActorController::class, 'createForm'])
         ->name('actor.create.form')
         ->middleware('can:create,' . Actor::class);
@@ -139,3 +142,7 @@ Route::post('/sign-in', [AuthController::class, 'signIn'])
 
 Route::post('/logout', [AuthController::class, 'logout'])
     ->name('logout');
+
+Route::get('/login-history', [LoginHistoryController::class, 'index'])
+    ->name('login-history')
+    ->middleware('auth');

@@ -69,14 +69,12 @@ class FilmController extends Controller
     {
         // $films = Film::all(); для отображения списка без пагинации
         $films = Film::paginate(5);
-
         return view('films.list', ['films' => $films]);
     }
 
     public function show(Film $film)
     {
         //$film = Film::query()->findOrFail($id);
-
         return view('films.show', compact('film'));
     }
 
