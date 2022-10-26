@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Genre\CreateRequest;
 use App\Http\Requests\Genre\EditRequest;
 use App\Models\Genre;
-use Illuminate\Http\Request;
+use App\Services\GenreService;
+
 
 class GenreController extends Controller
 {
+    public function __construct(private GenreService $genreService)
+    {
+    }
 
     public function createForm()
     {

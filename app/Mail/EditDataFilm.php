@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+
 use App\Models\Film;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -26,5 +27,6 @@ class EditDataFilm extends Mailable
     {
         return $this->subject('Film edit')
             ->view('emails.edit_film', ['title' => $this->film->title]);
+
     }
 }

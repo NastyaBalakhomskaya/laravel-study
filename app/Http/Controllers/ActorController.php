@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Actor\CreateRequest;
 use App\Http\Requests\Actor\EditRequest;
 use App\Models\Actor;
+use App\Services\ActorService;
 use Illuminate\Http\Request;
 
 class ActorController extends Controller
 {
+
+    public function __construct(private ActorService $actorService)
+    {
+    }
+
     public function createForm()
     {
         return view('actors.create');
