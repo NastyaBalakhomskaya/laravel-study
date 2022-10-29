@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\UserLoggedIn;
 use App\Http\Requests\User\SignInRequest;
-use Illuminate\Http\Request;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function __construct(private UserService $userService)
+    {
+    }
+
     public function signInForm()
     {
         return view('sign-in');
@@ -17,18 +20,19 @@ class AuthController extends Controller
     public function signIn(SignInRequest $request)
     {
         $credentials = $request->validated();
+        $user = $this->userService->signIn($credentials, 'web', $request);
 
-        $check = function ($user) {
-            return $user->email_verified_at !== null;
-        };
+        if ($user) {
+        //$check = function ($user) {
+        //    return $user->email_verified_at !== null;
+        //};
 
-        //attemptWhen - проверяем верификацию email
+        ////attemptWhen - проверяем верификацию email
 
-        if (Auth::attemptWhen($credentials)) {
-            //$user = auth()->user();
-            $event = new UserLoggedIn(Auth::user(), $request);
-
-            event($event);
+        //if (Auth::attemptWhen($credentials)) {
+        //    //$user = auth()->user();
+        //    $event = new UserLoggedIn(Auth::user(), $request);
+        //    event($event);
 
             session()->flash('success', 'Signed In');
 

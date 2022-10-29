@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Genre\CreateRequest;
 use App\Http\Requests\Genre\EditRequest;
 use App\Models\Genre;
-use Illuminate\Http\Request;
+use App\Services\GenreService;
+
 
 class GenreController extends Controller
 {
+    public function __construct(private GenreService $genreService)
+    {
+    }
 
     public function createForm()
     {
@@ -17,22 +21,20 @@ class GenreController extends Controller
 
     public function editForm(Genre $genre)
     {
-        //$Genre = Genre::query()->findOrFail($id);
         return view('genres.edit', compact('genre'));
     }
 
     public function delete(Genre $genre)
     {
-        //$genre = Genre::query()->findOrFail($id)->delete();
         $genre->delete();
+
         return redirect()->route('genre.list');
     }
 
     public function create(CreateRequest $request)
     {
         $data = $request->validated();
-        $genre = new Genre($data);
-        $genre->save();
+        $genre = $this->genreService->create($data);
 
         session()->flash('success', 'Success!');
         return redirect()->route('genre.show', ['genre' => $genre->id]);
@@ -40,10 +42,8 @@ class GenreController extends Controller
 
     public function edit(Genre $genre, EditRequest $request)
     {
-        //$genre = Genre::query()->findOrFail($id);
         $data = $request->validated();
-        $genre->fill($data);
-        $genre->save();
+        $this->genreService->edit($genre, $data);
 
         session()->flash('success', 'Success!');
         return redirect()->route('genre.show', ['genre' => $genre->id]);
@@ -58,8 +58,6 @@ class GenreController extends Controller
 
     public function show(Genre $genre)
     {
-        //$genre = Genre::query()->findOrFail($id);
-
         return view('genres.show', compact('genre'));
     }
 
