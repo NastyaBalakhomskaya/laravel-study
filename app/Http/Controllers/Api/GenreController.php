@@ -52,7 +52,7 @@ class GenreController extends Controller
             'message' => 'success',
         ];
 
-        return response($data, status: 204);
+        return response($data, status: 200);
     }
 }
 

@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 
+use App\Mail\EmailConfirm;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class NotifyVerificationCommand extends Command
@@ -14,7 +16,7 @@ class NotifyVerificationCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'users:notify-verification {email}';
+    protected $signature = 'users:notify-verification';
 
     /**
      * The console command description.
@@ -30,20 +32,20 @@ class NotifyVerificationCommand extends Command
      */
     public function handle()
     {
-        if (!$request->hasValidSignature()) {
-            abort(403);
+        $users = User::query()->whereNull('email_verified_at')->all();
+
+        if (!$users->count()) {
+            $this->warn('Verified users');
+
+            return self::FAILURE;
         }
 
-        $user = User::query()->findOrFail($id);
-
-        if (!hash_equals($hash, sha1($user->email))) {
-            abort(403);
+        foreach ($users as $user) {
+            Mail::to($user->email)->send(new EmailConfirm($user));
         }
-        $user->email_verified_at = new \DateTime();
-        $user->save();
+        $this->info('Successfully sent');
 
-        session()->flash('success', 'Success!');
-        return redirect()->route('home');
+        return $this::SUCCESS;
     }
 
 }
