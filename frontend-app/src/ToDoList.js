@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 function ToDoList() {
@@ -52,7 +53,6 @@ function ToDoList() {
                         {todos.map((todo, index) =>
                             <ToDo
                                 key={index}
-                                todo={todo}
                                 toggle={() => toggleComplete(index)}
                                 value={todo.value}
                                 isDone={todo.isDone}
@@ -67,7 +67,7 @@ function ToDoList() {
     );
 }
 
-function ToDo({ value, isDone, toggle, del, index }) {
+function ToDo({ value, isDone, toggle, del }) {
 
     return (
 
@@ -76,7 +76,7 @@ function ToDo({ value, isDone, toggle, del, index }) {
             <div checked className={isDone ? "todo_done" : ""}>
                 {value}
             </div>
-            <button onClick={() => del(index)} className="input-group-text">Delete ToDo</button>
+            <button onClick={del} className="input-group-text">Delete ToDo</button>
         </ul>
     );
 }
