@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import NotificationContext from "./context/NotificationContext";
 
 function TemperatureControl() {
   const [count, setTemp] = useState(10);
   const maxTemp = 30;
   const minTemp = 0;
+  const ctx = useContext(NotificationContext);
 
   const tempUp = () => {
     if (count < maxTemp)
       setTemp(count + 1);
+    ctx.success('temp up 1 grade');
 
   }
 
   const tempDown = () => {
     if (count > minTemp)
       setTemp(count - 1);
+    ctx.success('temp down 1 grade');
   }
 
 
