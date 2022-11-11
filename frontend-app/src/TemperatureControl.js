@@ -8,19 +8,18 @@ function TemperatureControl() {
   const ctx = useContext(NotificationContext);
 
   const tempUp = () => {
-    if (count < maxTemp)
+    if (count < maxTemp) {
       setTemp(count + 1);
-    ctx.success('temp up 1 grade');
-
+      ctx.success('temp up 1 grade');
+    }
   }
 
   const tempDown = () => {
-    if (count > minTemp)
+    if (count > minTemp) {
       setTemp(count - 1);
-    ctx.success('temp down 1 grade');
+      ctx.success('temp down 1 grade');
+    }
   }
-
-
   return (
     <div className="app-container">
       <div className="temperature-display-container">
