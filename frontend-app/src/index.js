@@ -5,13 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import TemperatureControl from './TemperatureControl';
 import ToDoList from './ToDoList';
+import withLocalStorage from './withLocalStorage'
+import { NotificationProvider } from './context/NotificationContext';
+import NotificationBar from './components/NotificationBar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const StorageToDoList = withLocalStorage('todolist', ToDoList);
 root.render(
   <React.StrictMode>
+   {/* <ToDoList/> */}
+   <NotificationProvider>
+      <NotificationBar/>
     {/* <App /> */}
-   {/*  <TemperatureControl/> */}
-   <ToDoList/>
+    {/*  <TemperatureControl/> */}
+      <StorageToDoList/>
+    </NotificationProvider>
   </React.StrictMode>
   
 );

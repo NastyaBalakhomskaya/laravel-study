@@ -1,33 +1,44 @@
 
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import NotificationContext from "./context/NotificationContext";
 
-function ToDoList() {
-    const [input, setInput] = useState('');
-    const [todos, setToDo] = useState([]);
+function ToDoList(props) {
+    const { save, load } = props;
+    const input = useRef('');
+    const [todos, setToDo] = useState(JSON.parse(load()) ?? []);
+    const ctx = useContext(NotificationContext);
 
-    const onInputChange = (e) => {
-        setInput(e.target.value);
-    }
+    useEffect(() => {
+        save(JSON.stringify(todos));
+    }, [todos]);
 
     const addToDo = (e) => {
         e.preventDefault();
-        if (input === '') {
+        /* if (input === '') { */
+        if (input.current.value === '') {
+            ctx.error('Input is empty');
             return;
         }
 
-        const newToDo = [...todos, { value: input, isDone: false }];
+        const newToDo = [...todos, { value: input.current.value, isDone: false }];
         setToDo(newToDo);
-        setInput('');
+        /* setInput(''); */
+        input.current.value = '';
+        input.current.blur();
+        ctx.success('ToDo was added!');
     }
 
     const deleteToDo = index => {
         const newToDos = [...todos];
         newToDos.splice(index, 1);
         setToDo(newToDos);
+        ctx.success('Selected todo deleted');
+
     };
 
     const deleteToDoAll = () => {
         setToDo([]);
+        ctx.success('All ToDo deleted!');
     }
 
 
@@ -35,6 +46,7 @@ function ToDoList() {
         const newToDo = [...todos];
         newToDo[index].isDone = !newToDo[index].isDone;
         setToDo(newToDo);
+        ctx.success('ToDo selected');
     }
 
     return (
@@ -42,7 +54,7 @@ function ToDoList() {
             <h1 className="text-center">To Do List</h1>
             <div className="justify-content-center">
                 <form className="input-group" onSubmit={addToDo} >
-                    <input onChange={onInputChange} value={input} type="text" className="form-control" />
+                    <input ref={input} type="text" className="form-control" />
                     <div className="input-group-append">
                         <button className="input-group-text">Add</button>
                     </div>
