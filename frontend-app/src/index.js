@@ -16,19 +16,22 @@ import Film from './pages/Film';
 import Actors from './pages/Actors';
 import Genres from './pages/Genres';
 import Footer from './components/Footer';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const StorageToDoList = withLocalStorage('todolist', ToDoList);
 root.render(
   <React.StrictMode>
     {/* <ToDoList/> */}
-    <NotificationProvider>
-      {/*   <NotificationBar/> */}
-      {/* <App /> */}
-      {/*  <TemperatureControl/> */}
-      {/*  <StorageToDoList/> */}
+    <Provider store={store}>
+      <NotificationProvider>
+        {/*   <NotificationBar/> */}
+        {/* <App /> */}
+        <TemperatureControl />
+        {/*   <StorageToDoList/>  */}
 
-      <BrowserRouter>
+        {/*       <BrowserRouter>
         <Header />
         <div className='container'>
           <NotificationBar />
@@ -43,8 +46,9 @@ root.render(
           </Routes>
         </div>
         <Footer />
-      </BrowserRouter>
-    </NotificationProvider>
+      </BrowserRouter> */}
+      </NotificationProvider>
+    </Provider>
   </React.StrictMode>
 
 );
