@@ -16,10 +16,8 @@ const todoSlice = createSlice({
         remove: (state, action) =>
             state.filter((_, todo) => todo !== action.payload),
 
-        removeAll: (state) =>
-            state = []
+        removeAll: (state) => state = []
     },
-
 });
 
 const { actions, reducer } = todoSlice;

@@ -17,8 +17,7 @@ function ToDo({ id, value, isDone }) {
             </div>
             <button onClick={deleteToDo} className="input-group-text">Delete ToDo</button>
         </ul>
-
     );
-
 }
+
 export default ToDo;

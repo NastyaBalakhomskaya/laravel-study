@@ -4,7 +4,6 @@ import NotificationContext from "./context/NotificationContext";
 import { down, getAllItems, up } from "./store/Temp/tempSlice";
 
 function TemperatureControl() {
-  // const [count, setTemp] = useState(15);
   const maxTemp = 30;
   const minTemp = 0;
   const ctx = useContext(NotificationContext);
@@ -14,7 +13,6 @@ function TemperatureControl() {
   const tempUp = () => {
     if (count < maxTemp) {
       dispatch(up(1))
-      //setTemp(count + 1);
       ctx.success('temp up 1 grade');
     }
   }
@@ -22,11 +20,9 @@ function TemperatureControl() {
   const tempDown = () => {
     if (count > minTemp) {
       dispatch(down(1))
-      //setTemp(count - 1);
       ctx.success('temp down 1 grade');
     }
   }
-
 
   return (
     <div className="app-container">
@@ -41,7 +37,6 @@ function TemperatureControl() {
       </div>
     </div>
   );
-
 }
 
 export default TemperatureControl;

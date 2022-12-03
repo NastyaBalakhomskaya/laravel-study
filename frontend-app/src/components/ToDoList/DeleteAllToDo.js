@@ -10,9 +10,7 @@ function DeleteToDoAll() {
     };
 
     return (
-
         <button className="input-group-text" onClick={Del}>Delete all</button>
-
     );
 }
 

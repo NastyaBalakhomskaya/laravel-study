@@ -10,14 +10,11 @@ const tempSlice = createSlice({
         up: (state, action) => {
             state.count += action.payload;
         },
-
-
         down: (state, action) => {
             state.count -= action.payload;
         },
     },
 });
-
 
 export default tempSlice.reducer;
 export const { up, down } = tempSlice.actions;

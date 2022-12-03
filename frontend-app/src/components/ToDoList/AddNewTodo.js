@@ -8,7 +8,6 @@ const AddNewTodo = () => {
     const ctx = useContext(NotificationContext);
     const dispatch = useDispatch();
 
-
     const addToDo = (e) => {
         e.preventDefault();
 
@@ -17,10 +16,7 @@ const AddNewTodo = () => {
             return;
         }
         dispatch(add(input.current.value));
-
-        /*      const newToDo = [...todos, { value: input.current.value, isDone: false }];
-            setToDo(newToDo);  */
-
+        
         input.current.value = '';
         input.current.blur();
         ctx.success('ToDo was added!');

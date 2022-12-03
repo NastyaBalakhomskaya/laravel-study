@@ -31,22 +31,22 @@ root.render(
         <TemperatureControl />
         {/*   <StorageToDoList/>  */}
 
-        {/*       <BrowserRouter>
-        <Header />
-        <div className='container'>
-          <NotificationBar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/films'>
-              <Route path=':id' element={<Film />} />
-            </Route>
-            <Route path='/actors' element={<Actors />} />
-            <Route path='/genres' element={<Genres />} />
-          </Routes>
-        </div>
-        <Footer />
-      </BrowserRouter> */}
+        <BrowserRouter>
+          <Header />
+          <div className='container'>
+            <NotificationBar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/films'>
+                <Route path=':id' element={<Film />} />
+              </Route>
+              <Route path='/actors' element={<Actors />} />
+              <Route path='/genres' element={<Genres />} />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
       </NotificationProvider>
     </Provider>
   </React.StrictMode>
