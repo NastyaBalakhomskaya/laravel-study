@@ -1,25 +1,29 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NotificationContext from "./context/NotificationContext";
+import { down, getAllItems, up } from "./store/Temp/tempSlice";
 
 function TemperatureControl() {
-  const [count, setTemp] = useState(10);
   const maxTemp = 30;
   const minTemp = 0;
   const ctx = useContext(NotificationContext);
+  const count = useSelector(getAllItems);
+  const dispatch = useDispatch();
 
   const tempUp = () => {
     if (count < maxTemp) {
-      setTemp(count + 1);
+      dispatch(up(1))
       ctx.success('temp up 1 grade');
     }
   }
 
   const tempDown = () => {
     if (count > minTemp) {
-      setTemp(count - 1);
+      dispatch(down(1))
       ctx.success('temp down 1 grade');
     }
   }
+
   return (
     <div className="app-container">
       <div className="temperature-display-container">
@@ -33,7 +37,6 @@ function TemperatureControl() {
       </div>
     </div>
   );
-
 }
 
 export default TemperatureControl;

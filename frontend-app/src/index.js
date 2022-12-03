@@ -16,35 +16,39 @@ import Film from './pages/Film';
 import Actors from './pages/Actors';
 import Genres from './pages/Genres';
 import Footer from './components/Footer';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const StorageToDoList = withLocalStorage('todolist', ToDoList);
 root.render(
   <React.StrictMode>
     {/* <ToDoList/> */}
-    <NotificationProvider>
-      {/*   <NotificationBar/> */}
-      {/* <App /> */}
-      {/*  <TemperatureControl/> */}
-      {/*  <StorageToDoList/> */}
+    <Provider store={store}>
+      <NotificationProvider>
+        {/*   <NotificationBar/> */}
+        {/* <App /> */}
+        <TemperatureControl />
+        {/*   <StorageToDoList/>  */}
 
-      <BrowserRouter>
-        <Header />
-        <div className='container'>
-          <NotificationBar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/films'>
-              <Route path=':id' element={<Film />} />
-            </Route>
-            <Route path='/actors' element={<Actors />} />
-            <Route path='/genres' element={<Genres />} />
-          </Routes>
-        </div>
-        <Footer />
-      </BrowserRouter>
-    </NotificationProvider>
+        <BrowserRouter>
+          <Header />
+          <div className='container'>
+            <NotificationBar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/films'>
+                <Route path=':id' element={<Film />} />
+              </Route>
+              <Route path='/actors' element={<Actors />} />
+              <Route path='/genres' element={<Genres />} />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
+      </NotificationProvider>
+    </Provider>
   </React.StrictMode>
 
 );

@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -19,10 +19,10 @@ code {
 .backgroudToDo {
   background-color: aqua;
   list-style-type:none
-}
+} */
 
 /*css для TemperatureControl.js*/
-/*
+
 body {
   font-family: sans-serif;
   text-align: center;
@@ -99,4 +99,3 @@ button:focus {
 .hot {
   background: #ff5200;
 }
-*/
